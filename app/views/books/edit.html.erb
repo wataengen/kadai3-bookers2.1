@@ -4,7 +4,18 @@
     <div class="row">
      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing Book</h1>
-  		  <%= form_with model: @book do |f| %>
+  		<div>
+  		  <% if @book.errors.any? %>
+      <%= @book.errors.count %> errors prohibited this obj from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+     <% end %>
+  		</div>
+
+  		  <%= form_with model: @book, url: update_books_path(@book.id), method: :patch do |f| %>
   		  <!--<input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="90vkwA7tiNRhrivYZiZpLpOEST5vYduq31iJNB_jW_D0TUge0VI_8mCNXzrRMYWgwSp9sKILvt3Uq_IaytFwGA" autocomplete="off">-->
         <div class="form-group">
          <label for="book_title">Title</label>
@@ -16,7 +27,8 @@
 
       </div>
       <div class="form-group">
-       <input type="submit" name="commit" value="Update Book" class="btn btn-success" data-disable-with="Update Book">
+       <%= f.submit "Update Book", class: "btn btn-success" %>
+
       </div>
   		<%= link_to "Show","/books/#{@book.id}" %> |
   		<%= link_to "Back", "/books" %>

@@ -5,7 +5,17 @@
     <div class="row">
      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
        <h2>User info</h2>
-       <%= form_with model: @user do|f| %>
+       <div>
+        <% if @user.errors.any? %>
+         <%= @user.errors.count %> errors prohibited this obj from being saved:
+           <ul>
+            <% @user.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+          <% end %>
+           </ul>
+        <% end %>
+       </div>
+       <%= form_with model: @user,url: update_users_path(@user.id), method: :patch do|f| %>
         <!--<form enctype="multipart/form-data" action="/users/118907" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="8--zu6miCHQWuur11zcPVYsfUvIrEL0PZb3o01sPcDeux9DVcvhHriIx1Fzp0vwa1SNzOr9O-oqp1kKk5RpL4Q" autocomplete="off">-->
 
         <div class="form-group">
@@ -21,11 +31,11 @@
         <div class="form-group">
           <label for="user_introduction">Introduction</label>
           <%= f.text_area :introduction %>
-          
+
         </div>
       <div class="form-group">
         <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
-      　　
+
       <% end %>
       </div>
     </div>
