@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create, :edit, :show, :index]
   resources :users, only:[:index, :show, :edit]
 
+  delete 'books/:id' => 'books#destroy', as: 'destroy_books'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

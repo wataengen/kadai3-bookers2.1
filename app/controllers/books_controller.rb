@@ -9,20 +9,28 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
   def index
-
-  end
-
-  def show
     @book = Book.new
     @books = Book.all
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
+
   def edit
+    @book = Book.find(params[:id])
+
+  end
+
+  def destroy
+    books = Book.find(params[:id])
+    books.destroy
+    redirect_to '/books'
   end
 
   private
     def book_params
-      params.require(:book).permit(:title, :opinion)
+      params.require(:books).permit(:title, :opinion)
     end
 
 
