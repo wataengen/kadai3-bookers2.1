@@ -11,16 +11,26 @@
      <div class="row">
          <h2>User info</h2>
          <table class="table">
-          <tbody>
-
-          </tbody>
-         </table>
+          <tbody><tr></tr>
+           <tr>
+	         <th>name</th>
+	         <th><%= @user.name %></th>
+           </tr>
+           <tr>
+	        <th>introduction</th>
+	        <th><%= @user.introduction %></th>
+          </tr>
+          
+          
+         </tbody>
+        </table>
 
          <div class="row">
           <a class="btn btn-outline-secondary btn-block">
             <i class="fas fa-user-cog" aria-hidden="true"></i>
           </a>
           </div>
+          
 
           <%= render '/books/newbook', book: @book %>
 
@@ -36,14 +46,14 @@
           </thead>
           <tbody>
 
-             <% @users.each do |user| %>
+             <% @books.each do |book| %>
              <tr>
                <td></td>
-               <td><%= link_to user.name %></td>
-               <td><%= user.introduction %></td>
+               <td><%= link_to book.title, "/books/#{book.id}" %></td>
+               <td><%= book.opinion %></td>
+
              </tr>
              <% end %>
-
              </tbody>
         </table>
        </div>

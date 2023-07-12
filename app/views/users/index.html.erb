@@ -9,19 +9,8 @@
       <p id="notice"></p>
      <div class="container px-5 mx-sm-0">
      <div class="row">
-         <h2>User info</h2>
-         <table class="table">
-          <tbody>
-
-          </tbody>
-         </table>
-
-         <div class="row">
-          <a class="btn btn-outline-secondary btn-block">
-            <i class="fas fa-user-cog" aria-hidden="true"></i>
-          </a>
-          </div>
-
+         
+          <%= render 'userinfo', user: @user %>
           <%= render '/books/newbook', book: @book %>
 
     <main>
@@ -39,7 +28,7 @@
              <% @users.each do |user| %>
              <tr>
                <td></td>
-               <td><%= link_to user.name %></td>
+               <td><%= link_to user.name, "/users/#{user.id}" %></td>
                <td><%= user.introduction %></td>
              </tr>
              <% end %>
