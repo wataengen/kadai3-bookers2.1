@@ -28,22 +28,30 @@
           </thead>
           <tbody>
 
-          <div>
+          <tr>
              <th>
-               <% if @book.book_image.attached? %>
-                   <%= image_tag @book.book_image, size: "100x100" %>
+
+                 <% if @book.book_image.attached? %>
+                  <%= link_to "/users/#{@book.user_id}" do %>
+                   <%= image_tag (@book.book_image), size: "100x100" %><br>
+                  <% end %>
+                   <%= link_to @book.user.name, "/users/#{@book.user_id}" %>
                  <% else %>
-                   <%= image_tag 'default-image', size: "100x100" %>
+                  <%= link_to "/users/#{@book.user_id}" do %>
+                   <%= image_tag ('default-image'), size: "100x100" %><br>
+                  <% end %>
+                   <%= link_to @book.user.name, "/users/#{@book.user_id}" %>
                  <% end %>
+
              </th>
-             <th><%= @book.title %></th>
+             <th><%= link_to @book.title, "/books/#{@book.id}" %></th>
              <th><%= @book.body %></th>
              <% if @book.user == current_user %>
              <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
              <td><%= link_to "Destroy", destroy_books_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %></td>
              <% end %>
 
-          </div>
+          </tr>
 
           </tbody>
         </table>

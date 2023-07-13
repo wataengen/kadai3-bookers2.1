@@ -18,7 +18,7 @@
 
 
      <div class="col-md-8 offset-md-1">
-        <h2>Users</h2>
+        <h2>Books</h2>
         <table class="table table-bover table-inverse">
           <thead>
             <th>
@@ -38,7 +38,7 @@
                    <%= image_tag 'default-image', size: "100x100" %>
                  <% end %>
                </td>
-               <td><%= link_to book.title, "/book/#{book.id}" %></td>
+               <td><%= link_to book.title, "/books/#{book.id}" %></td>
                <td><%= book.body %></td>
 
              </tr>

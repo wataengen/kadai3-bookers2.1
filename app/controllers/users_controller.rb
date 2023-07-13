@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @book = Book.new
-    @user = current_user # Userinfoを表示させる
+    @user = User.find(params[:id]) # Userinfoを表示させる
     @books = @user.books
 
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
     @user = User.find(params[:id])
     if @user.update(user_params)
-    flash[:notice] = 'You have updated user successfully.'
+    flash[:notice] = 'You have updated User Info successfully.'
     redirect_to user_path(@user.id)
     else
 
