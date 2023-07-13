@@ -1,20 +1,7 @@
 class BooksController < ApplicationController
+before_action :authenticate_user
 
 
-  def update
-    book = Book.find(params[:id])
-  unless book.user_id == current_user.id
-    redirect_to books_path
-  end
-    @book = Book.find(params[:id])
-    if @book.update(book_params)
-    flash[:notice] = 'You have created book successfully.'
-    redirect_to book_path(@book.id)
-    else
-      @user = current_user
-      render :edit
-    end
-  end
   def index
     @user = current_user
     @book = Book.new
@@ -51,6 +38,20 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
   end
+  def update
+    book = Book.find(params[:id])
+  unless book.user_id == current_user.id
+    redirect_to books_path
+  end
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+    flash[:notice] = 'You have created book successfully.'
+    redirect_to book_path(@book.id)
+    else
+      @user = current_user
+      render :edit
+    end
+  end
 
   def destroy
     books = Book.find(params[:id])
@@ -64,6 +65,10 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :body, :book_image)
     end
 
-
+   def authenticate_user
+    unless user_signed_in?
+    redirect_to new_user_session_path
+    end
+   end
 
 end

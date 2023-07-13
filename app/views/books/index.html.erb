@@ -40,9 +40,13 @@
              <tr>
                <td>
                  <% if book.book_image.attached? %>
+                 <%= link_to "/users/#{book.user_id}" do %>
                    <%= image_tag book.book_image, size: "100x100" %>
+                 <% end %>
                  <% else %>
+                 <%= link_to "/users/#{book.user_id}" do %>
                    <%= image_tag 'default-image', size: "100x100" %>
+                 <% end %>
                  <% end %>
                </td>
                <td><%= link_to book.title, "/books/#{book.id}" %></td>

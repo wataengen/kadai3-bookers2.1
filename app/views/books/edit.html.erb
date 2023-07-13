@@ -15,7 +15,7 @@
      <% end %>
   		</div>
 
-  		  <%= form_with model: @book, url: update_books_path(@book.id), method: :patch do |f| %>
+  		  <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
   		  <!--<input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="90vkwA7tiNRhrivYZiZpLpOEST5vYduq31iJNB_jW_D0TUge0VI_8mCNXzrRMYWgwSp9sKILvt3Uq_IaytFwGA" autocomplete="off">-->
         <div class="form-group">
          <label for="book_title">Title</label>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-         <label for="book_title">Title</label>
+         <label for="book_title">Image</label>
          <%= f.file_field :book_image, class: "form-control-file"  %>
         </div>
 

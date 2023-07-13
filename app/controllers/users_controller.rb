@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :authenticate_user
 
 
   def index
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
   unless user.id == current_user.id
-    redirect_to users_path
+    redirect_to user_path(current_user.id)
   end
     @user = User.find(params[:id])
   end
@@ -44,6 +44,12 @@ class UsersController < ApplicationController
 private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def authenticate_user
+    unless user_signed_in?
+    redirect_to new_user_session_path
+    end
   end
 
 

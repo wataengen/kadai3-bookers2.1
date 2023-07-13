@@ -15,7 +15,7 @@
            </ul>
         <% end %>
 
-       <%= form_with model: @user,url: update_users_path(@user.id), method: :patch do|f| %>
+       <%= form_with model: @user,url: user_path(@user.id), method: :patch do|f| %>
         <!--<form enctype="multipart/form-data" action="/users/118907" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="8--zu6miCHQWuur11zcPVYsfUvIrEL0PZb3o01sPcDeux9DVcvhHriIx1Fzp0vwa1SNzOr9O-oqp1kKk5RpL4Q" autocomplete="off">-->
 
         <div class="form-group">
