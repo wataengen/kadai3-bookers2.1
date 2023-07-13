@@ -3,13 +3,13 @@
     <tbody>
       <tr>
         <th>
-          <% if user.user_image.attached? %>
-           <%= image_tag user.user_image, size: "100x100" %>
+          <% if user.profile_image.attached? %>
+           <%= image_tag user.profile_image, size: "100x100" %>
           <% else %>
            <%= image_tag 'default-image', size: "100x100" %>
           <% end %>
         </th>
-        
+
       </tr>
       <tr>
 	     <th>name</th>
@@ -23,8 +23,8 @@
   </table>
 
 <div class="row">
-  <%= link_to "Edit", "/users/#{user.id}/edit" %>
-  <a class=>
-    <i class="fas fa-user-cog" aria-hidden="true"></i>
-  </a>
+  <%= link_to "/users/#{user.id}/edit", class: "btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-user-cog" aria-hidden="true"></i>
+  <% end %>
+
 </div>

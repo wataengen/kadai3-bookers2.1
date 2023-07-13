@@ -3,5 +3,5 @@ class Book < ApplicationRecord
   has_one_attached :book_image
 
   validates :title, presence: true
-  validates :opinion, presence: true
+  validates :body, presence: true
 end
