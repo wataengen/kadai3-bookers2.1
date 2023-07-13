@@ -4,7 +4,7 @@
 
   </head>
   <body>
-
+ <main>
 
       <p id="notice"></p>
      <div class="container px-5 mx-sm-0">
@@ -15,7 +15,7 @@
           <%= render '/books/newbook', book: @book %>
          </div>
 
-    <main>
+
      <div class="col-md-8 offset-md-1">
         <h2>Users</h2>
         <table class="table table-bover table-inverse">
@@ -29,7 +29,13 @@
 
              <% @users.each do |user| %>
              <tr>
-               <td></td>
+               <td>
+                 <% if user.profile_image.attached? %>
+                   <%= image_tag user.profile_image, size: "100x100" %>
+                 <% else %>
+                   <%= image_tag 'default-image', size: "100x100" %>
+                 <% end %>
+               </td>
                <td><%= link_to user.name, "/users/#{user.id}" %></td>
                <td><%= user.introduction %></td>
              </tr>
