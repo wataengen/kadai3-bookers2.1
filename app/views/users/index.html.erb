@@ -38,6 +38,7 @@
                </td>
                <td><%= link_to user.name, "/users/#{user.id}" %></td>
                <td><%= user.introduction %></td>
+               <td><%= link_to "Show", "/users/#{user.id}" %></td>
              </tr>
              <% end %>
 
