@@ -11,11 +11,13 @@
       <p id="notice"></p>
      <div class="container px-5 mx-sm-0">
       <div class="row">
+        <div class="col-md-3">
          <h2>User info</h2>
 
 
           <%= render '/users/userinfo', user: @user %>
          <%= render 'newbook', book: @new_book %>
+         </div>
 
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>

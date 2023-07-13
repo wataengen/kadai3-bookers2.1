@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
   unless user.id == current_user.id
-    redirect_to books_path
+    redirect_to users_path
   end
     @user = User.find(params[:id])
   end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
   unless user.id == current_user.id
-    redirect_to books_path
+    redirect_to users_path
   end
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction, :user_image)
   end
 
 
