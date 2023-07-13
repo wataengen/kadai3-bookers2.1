@@ -5,14 +5,15 @@ class UsersController < ApplicationController
   def index
     @book = Book.new
     @users = User.all
-    @user = current_user
+    @user = current_user # Userinfoを表示させる
+
     # @user = current_user
     # @books = @user.books.page(params[:user_id])
   end
 
   def show
     @book = Book.new
-    @user = current_user
+    @user = current_user # Userinfoを表示させる
     @books = @user.books
 
   end
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
     flash[:notice] = 'You have updated user successfully.'
-    redirect_to users_path(@user.id)
+    redirect_to user_path(@user.id)
     else
 
       render :edit
